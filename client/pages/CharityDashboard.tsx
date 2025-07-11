@@ -1,8 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Utensils, Heart, Construction } from "lucide-react";
+import { Utensils, Heart, Construction, LogOut, User } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function CharityDashboard() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -14,6 +19,27 @@ export default function CharityDashboard() {
                 <Utensils className="w-4 h-4 text-white" />
               </div>
               <span className="text-xl font-bold text-gray-900">ResQBites</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-brand-green rounded-full flex items-center justify-center">
+                  <User className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-sm font-medium text-gray-700">
+                  {user?.organizationName || "Charity"}
+                </span>
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => {
+                  logout();
+                  navigate("/auth");
+                }}
+                title="Logout"
+              >
+                <LogOut className="w-4 h-4" />
+              </Button>
             </div>
           </div>
         </div>
