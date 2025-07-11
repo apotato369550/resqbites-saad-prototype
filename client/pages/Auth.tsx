@@ -196,6 +196,60 @@ export default function Auth() {
               </div>
             )}
 
+            {/* Error/Success Messages */}
+            {error && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                <p className="text-red-800 text-sm">{error}</p>
+                {error.includes("Try demo accounts") && (
+                  <div className="mt-2 text-xs text-red-700 space-y-1">
+                    <p>
+                      <strong>Restaurant:</strong> restaurant@demo.com (any
+                      password)
+                    </p>
+                    <p>
+                      <strong>Charity:</strong> charity@demo.com (any password)
+                    </p>
+                    <p>
+                      <strong>Admin:</strong> admin@demo.com (any password)
+                    </p>
+                    <p>
+                      <strong>Pending Charity:</strong> pending@demo.com (any
+                      password)
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
+            {success && (
+              <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                <p className="text-green-800 text-sm">{success}</p>
+              </div>
+            )}
+
+            {/* Demo Account Info */}
+            {authMode === "login" && (
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                <p className="text-blue-800 text-sm font-medium mb-2">
+                  Demo Accounts:
+                </p>
+                <div className="text-xs text-blue-700 space-y-1">
+                  <p>
+                    <strong>Restaurant:</strong> restaurant@demo.com
+                  </p>
+                  <p>
+                    <strong>Charity:</strong> charity@demo.com
+                  </p>
+                  <p>
+                    <strong>Admin:</strong> admin@demo.com
+                  </p>
+                  <p>
+                    <strong>Pending Charity:</strong> pending@demo.com
+                  </p>
+                  <p className="text-blue-600 mt-1">Use any password</p>
+                </div>
+              </div>
+            )}
+
             {/* Auth Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
               {authMode === "register" && (
@@ -285,9 +339,21 @@ export default function Auth() {
               <Button
                 type="submit"
                 className="w-full h-12 text-base font-semibold"
+                disabled={isLoading}
               >
-                {authMode === "login" ? "Sign In" : "Create Account"}
-                <ArrowRight className="ml-2 h-4 w-4" />
+                {isLoading ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    {authMode === "login"
+                      ? "Signing In..."
+                      : "Creating Account..."}
+                  </div>
+                ) : (
+                  <>
+                    {authMode === "login" ? "Sign In" : "Create Account"}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </>
+                )}
               </Button>
             </form>
 
