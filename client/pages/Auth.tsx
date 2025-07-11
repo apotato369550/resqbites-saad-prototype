@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -21,10 +22,12 @@ import {
   User,
 } from "lucide-react";
 
-type UserRole = "restaurant" | "charity" | "admin";
+import type { UserRole } from "@/contexts/AuthContext";
 type AuthMode = "login" | "register";
 
 export default function Auth() {
+  const { login, register, isAuthenticated, user, isLoading } = useAuth();
+  const navigate = useNavigate();
   const [authMode, setAuthMode] = useState<AuthMode>("login");
   const [selectedRole, setSelectedRole] = useState<UserRole>("restaurant");
   const [formData, setFormData] = useState({
@@ -33,6 +36,8 @@ export default function Auth() {
     confirmPassword: "",
     organizationName: "",
   });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const roleOptions = [
     {
@@ -51,10 +56,64 @@ export default function Auth() {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      switch (user.role) {
+        case "restaurant":
+          navigate("/restaurant");
+          break;
+        case "charity":
+          navigate("/charity");
+          break;
+        case "admin":
+          navigate("/admin");
+          break;
+      }
+    }
+  }, [isAuthenticated, user, navigate]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement authentication logic
-    console.log("Auth submit:", { authMode, selectedRole, formData });
+    setError("");
+    setSuccess("");
+
+    if (authMode === "register") {
+      if (formData.password !== formData.confirmPassword) {
+        setError("Passwords do not match");
+        return;
+      }
+      if (!formData.organizationName.trim()) {
+        setError("Organization name is required");
+        return;
+      }
+    }
+
+    try {
+      let success = false;
+
+      if (authMode === "login") {
+        success = await login(formData.email, formData.password, selectedRole);
+        if (!success) {
+          setError("Invalid email, password, or role. Try demo accounts:");
+        }
+      } else {
+        success = await register(
+          formData.email,
+          formData.password,
+          selectedRole,
+          formData.organizationName,
+        );
+        if (!success) {
+          setError("Email already exists or registration failed");
+        } else {
+          setSuccess("Registration successful! You can now login.");
+          setAuthMode("login");
+        }
+      }
+    } catch (err) {
+      setError("An error occurred. Please try again.");
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
