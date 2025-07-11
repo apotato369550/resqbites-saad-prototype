@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -41,6 +42,8 @@ interface FoodDonation {
 }
 
 export default function RestaurantDashboard() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [donations] = useState<FoodDonation[]>([
     {
@@ -140,10 +143,18 @@ export default function RestaurantDashboard() {
                   <User className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-sm font-medium text-gray-700">
-                  Downtown Kitchen
+                  {user?.organizationName || "Restaurant"}
                 </span>
               </div>
-              <Button variant="ghost" size="icon">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => {
+                  logout();
+                  navigate("/auth");
+                }}
+                title="Logout"
+              >
                 <LogOut className="w-4 h-4" />
               </Button>
             </div>
