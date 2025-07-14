@@ -112,9 +112,9 @@ export default function CharityDashboard() {
       contactPerson: "Chef Maria",
       contactPhone: "(555) 123-4567",
       images: [
-        "https://images.unsplash.com/photo-1553909489-cd47e0ef937f?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1539252554453-80ab65ce3586?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop&q=80",
       ],
       distance: "0.8 miles",
       postedAt: "2024-01-15 12:15",
@@ -143,8 +143,8 @@ export default function CharityDashboard() {
       contactPerson: "Chef Maria",
       contactPhone: "(555) 123-4567",
       images: [
-        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&h=300&fit=crop&q=80",
       ],
       distance: "0.8 miles",
       postedAt: "2024-01-15 14:30",
@@ -174,7 +174,7 @@ export default function CharityDashboard() {
       contactPhone: "(555) 987-6543",
       specialInstructions: "Please bring refrigerated containers.",
       images: [
-        "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop&q=80",
       ],
       distance: "1.2 miles",
       postedAt: "2024-01-15 15:45",
@@ -203,8 +203,8 @@ export default function CharityDashboard() {
       contactPerson: "Sarah",
       contactPhone: "(555) 456-7890",
       images: [
-        "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1507434965515-61970f2bd7c6?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=400&h=300&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop&q=80",
       ],
       distance: "2.1 miles",
       postedAt: "2024-01-15 16:20",
