@@ -13,6 +13,7 @@ import RestaurantDashboard from "./pages/RestaurantDashboard";
 import CharityDashboard from "./pages/CharityDashboard";
 import AdminPanel from "./pages/AdminPanel";
 import PostDonation from "./pages/PostDonation";
+import ManageClaimedFood from "./pages/ManageClaimedFood";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -56,6 +57,14 @@ const App = () => (
               element={
                 <ProtectedRoute requiredRole="restaurant">
                   <PostDonation />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/manage-claimed"
+              element={
+                <ProtectedRoute requiredRole="charity" requireVerification>
+                  <ManageClaimedFood />
                 </ProtectedRoute>
               }
             />
