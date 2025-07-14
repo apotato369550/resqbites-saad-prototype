@@ -13,12 +13,7 @@ export interface User {
 interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
-  login: (
-    email: string,
-    password: string,
-    role: UserRole,
-    organizationName?: string,
-  ) => Promise<boolean>;
+  login: (email: string, password: string) => Promise<boolean>;
   register: (
     email: string,
     password: string,
@@ -91,20 +86,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setIsLoading(false);
   }, []);
 
-  const login = async (
-    email: string,
-    password: string,
-    role: UserRole,
-  ): Promise<boolean> => {
+  const login = async (email: string, password: string): Promise<boolean> => {
     setIsLoading(true);
 
     // Simulate API call delay
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // Find mock user
-    const foundUser = mockUsers.find(
-      (u) => u.email === email && u.role === role,
-    );
+    // Find mock user by email only (role is determined by the user's actual role)
+    const foundUser = mockUsers.find((u) => u.email === email);
 
     if (foundUser) {
       setUser(foundUser);
