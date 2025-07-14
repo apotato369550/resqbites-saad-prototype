@@ -88,8 +88,8 @@ export default function RestaurantDashboard() {
       specialInstructions:
         "Please bring insulated bags. Ring bell at loading dock.",
       images: [
-        "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=400&h=300&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop&q=80",
       ],
       status: "reserved",
       reservedBy: "City Food Bank",
@@ -110,9 +110,9 @@ export default function RestaurantDashboard() {
       contactPerson: "Chef Maria",
       contactPhone: "(555) 123-4567",
       images: [
-        "https://images.unsplash.com/photo-1553909489-cd47e0ef937f?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1539252554453-80ab65ce3586?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop&q=80",
       ],
       status: "active",
       postedAt: "2024-01-15 12:15",
@@ -132,7 +132,7 @@ export default function RestaurantDashboard() {
       contactPerson: "Chef Maria",
       contactPhone: "(555) 123-4567",
       images: [
-        "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&h=300&fit=crop&q=80",
       ],
       status: "completed",
       reservedBy: "Hope Community Center",
@@ -155,8 +155,8 @@ export default function RestaurantDashboard() {
       contactPerson: "Chef Maria",
       contactPhone: "(555) 123-4567",
       images: [
-        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&h=300&fit=crop&q=80",
       ],
       status: "active",
       postedAt: "2024-01-15 14:30",
