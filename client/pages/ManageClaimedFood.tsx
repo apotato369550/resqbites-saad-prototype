@@ -96,8 +96,8 @@ export default function ManageClaimedFood() {
       location: "Downtown Kitchen, 123 Main St, Loading Dock",
       contactPerson: "Chef Maria",
       images: [
-        "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=400&h=300&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=300&fit=crop&q=80",
       ],
       status: "picked_up",
       claimedAt: "2024-01-15 11:00",
@@ -115,8 +115,8 @@ export default function ManageClaimedFood() {
       location: "Downtown Kitchen, 123 Main St, Loading Dock",
       contactPerson: "Chef Maria",
       images: [
-        "https://images.unsplash.com/photo-1553909489-cd47e0ef937f?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1539252554453-80ab65ce3586?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop&q=80",
       ],
       status: "reserved",
       claimedAt: "2024-01-15 12:30",
@@ -133,7 +133,7 @@ export default function ManageClaimedFood() {
       location: "Downtown Kitchen, 123 Main St, Loading Dock",
       contactPerson: "Chef Maria",
       images: [
-        "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&h=300&fit=crop&q=80",
       ],
       status: "completed",
       claimedAt: "2024-01-14 13:00",
@@ -157,7 +157,7 @@ export default function ManageClaimedFood() {
       location: "Bella Vista Bistro, 456 Oak Avenue, Kitchen Exit",
       contactPerson: "Chef Antonio",
       images: [
-        "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop",
+        "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop&q=80",
       ],
       status: "reserved",
       claimedAt: "2024-01-15 16:15",
