@@ -401,7 +401,7 @@ export default function PendingCharityDashboard() {
             <div className="space-y-2">
               <label className="text-sm font-medium">Target Population *</label>
               <Textarea
-                placeholder="Who does your organization serve? (e.g., homeless individuals, low-income families, seniors)"
+                placeholder="Who does your organization serve? (e.g., street children, informal settlers, PWDs, senior citizens, indigenous communities)"
                 value={applicationData.targetPopulation}
                 onChange={(e) =>
                   handleInputChange("targetPopulation", e.target.value)
@@ -414,7 +414,7 @@ export default function PendingCharityDashboard() {
             <div className="space-y-2">
               <label className="text-sm font-medium">Operating Hours</label>
               <Input
-                placeholder="e.g., Mon-Fri 9AM-5PM, Sat 10AM-2PM"
+                placeholder="e.g., Lunes-Biyernes 9AM-5PM, Sabado 10AM-2PM"
                 value={applicationData.operatingHours}
                 onChange={(e) =>
                   handleInputChange("operatingHours", e.target.value)
