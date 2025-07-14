@@ -216,9 +216,6 @@ export default function Auth() {
                       <strong>Pending Charity:</strong> pending@demo.com (any
                       password)
                     </p>
-                    <p className="text-red-600 mt-1">
-                      Role selection is ignored for login
-                    </p>
                   </div>
                 )}
               </div>
