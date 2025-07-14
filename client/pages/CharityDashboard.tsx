@@ -112,7 +112,7 @@ export default function CharityDashboard() {
       contactPerson: "Chef Maria",
       contactPhone: "(555) 123-4567",
       images: [
-        "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop&q=80",
+        "https://www.spicebangla.com/wp-content/uploads/2024/07/vegetable-sandwich-recipe.webp",
         "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop&q=80",
         "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop&q=80",
       ],
