@@ -14,6 +14,7 @@ import CharityDashboard from "./pages/CharityDashboard";
 import AdminPanel from "./pages/AdminPanel";
 import PostDonation from "./pages/PostDonation";
 import ManageClaimedFood from "./pages/ManageClaimedFood";
+import PendingCharityDashboard from "./pages/PendingCharityDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -65,6 +66,14 @@ const App = () => (
               element={
                 <ProtectedRoute requiredRole="charity" requireVerification>
                   <ManageClaimedFood />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/pending-verification"
+              element={
+                <ProtectedRoute requiredRole="charity">
+                  <PendingCharityDashboard />
                 </ProtectedRoute>
               }
             />
