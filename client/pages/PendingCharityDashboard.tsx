@@ -73,16 +73,14 @@ export default function PendingCharityDashboard() {
     lastUpdated: "2024-01-12T14:15:00Z",
     reviewerNotes: "",
     documentsRequired: [
-      "IRS Tax Exemption Letter (501c3)",
-      "State Business Registration",
-      "Board of Directors List",
-      "Annual Report or Financial Statements",
-      "Proof of Address",
+      "SEC Certificate of Registration (Non-stock, Non-profit)",
+      "DSWD Certificate of Accreditation",
+      "BIR Certificate of Registration",
+      "Barangay Clearance or Business Permit",
+      "Articles of Incorporation",
+      "Board Resolution authorizing food donation activities",
     ],
-    documentsSubmitted: [
-      "tax_exemption_letter.pdf",
-      "business_registration.pdf",
-    ],
+    documentsSubmitted: ["sec_certificate.pdf", "dswd_accreditation.pdf"],
   });
 
   const [applicationData, setApplicationData] =
@@ -235,7 +233,7 @@ export default function PendingCharityDashboard() {
                   Organization Type *
                 </label>
                 <Input
-                  placeholder="e.g., 501(c)(3) Nonprofit, Faith-based, Community Center"
+                  placeholder="e.g., Non-stock Non-profit Corporation, Foundation, NGO, Religious Organization"
                   value={applicationData.organizationType}
                   onChange={(e) =>
                     handleInputChange("organizationType", e.target.value)
@@ -284,9 +282,11 @@ export default function PendingCharityDashboard() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Tax ID / EIN *</label>
+                <label className="text-sm font-medium">
+                  TIN (Tax Identification Number) *
+                </label>
                 <Input
-                  placeholder="XX-XXXXXXX"
+                  placeholder="XXX-XXX-XXX-XXX"
                   value={applicationData.taxId}
                   onChange={(e) => handleInputChange("taxId", e.target.value)}
                   required
@@ -441,11 +441,17 @@ export default function PendingCharityDashboard() {
                 Required Documents:
               </h4>
               <ul className="text-sm text-blue-800 space-y-1">
-                <li>• IRS Tax Exemption Letter (501c3 determination letter)</li>
-                <li>• State Business Registration Certificate</li>
-                <li>• Board of Directors List</li>
-                <li>• Annual Report or Financial Statements (most recent)</li>
-                <li>• Proof of Address (utility bill, lease agreement)</li>
+                <li>
+                  • SEC Certificate of Registration (Non-stock, Non-profit
+                  corporation)
+                </li>
+                <li>
+                  • DSWD Certificate of Accreditation as a Social Welfare Agency
+                </li>
+                <li>• BIR Certificate of Registration and TIN</li>
+                <li>• Barangay Clearance or Mayor's Business Permit</li>
+                <li>• Articles of Incorporation and By-laws</li>
+                <li>• Board Resolution authorizing food donation activities</li>
               </ul>
             </div>
 
@@ -764,11 +770,14 @@ export default function PendingCharityDashboard() {
                   Verification Process
                 </h4>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Submit complete application with required documents</li>
+                  <li>
+                    • Submit complete application with required Philippine
+                    documents
+                  </li>
                   <li>
                     • Our team reviews your submission (3-5 business days)
                   </li>
-                  <li>• We may request additional information if needed</li>
+                  <li>• We verify documents with SEC and DSWD if needed</li>
                   <li>• Once approved, you can start accepting donations</li>
                 </ul>
               </div>
@@ -778,9 +787,12 @@ export default function PendingCharityDashboard() {
                 </h4>
                 <ul className="text-sm text-gray-600 space-y-1">
                   <li>• Ensure all documents are clear and readable</li>
-                  <li>• Tax exemption letter must be current</li>
-                  <li>• Contact information must match official records</li>
-                  <li>• Business registration must be up to date</li>
+                  <li>• SEC registration must be current and valid</li>
+                  <li>• DSWD accreditation should not be expired</li>
+                  <li>• Contact information must match SEC records</li>
+                  <li>
+                    • Barangay clearance should be recent (within 6 months)
+                  </li>
                 </ul>
               </div>
             </div>
