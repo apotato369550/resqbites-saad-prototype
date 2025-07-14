@@ -93,9 +93,9 @@ export default function Auth() {
       let success = false;
 
       if (authMode === "login") {
-        success = await login(formData.email, formData.password, selectedRole);
+        success = await login(formData.email, formData.password);
         if (!success) {
-          setError("Invalid email, password, or role. Try demo accounts:");
+          setError("Invalid email or password. Try demo accounts:");
         }
       } else {
         success = await register(
