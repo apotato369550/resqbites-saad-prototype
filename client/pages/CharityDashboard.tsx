@@ -174,7 +174,7 @@ export default function CharityDashboard() {
       contactPhone: "(555) 987-6543",
       specialInstructions: "Please bring refrigerated containers.",
       images: [
-        "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop&q=80",
+        "https://www.yummytummyaarthi.com/wp-content/uploads/2022/11/red-sauce-pasta-1-500x500.jpg",
       ],
       distance: "1.2 miles",
       postedAt: "2024-01-15 15:45",
