@@ -152,8 +152,12 @@ export default function PostDonation() {
               </Link>
               <div className="h-6 w-px bg-gray-300"></div>
               <div className="flex items-center gap-2">
-                <div className="flex items-center justify-center w-8 h-8 bg-brand-green rounded-lg">
-                  <Utensils className="w-4 h-4 text-white" />
+                <div className="flex items-center justify-center w-8 h-8 rounded-lg">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets%2Ff3e86ddc232c48b08028cac70a1690ce%2F2d8650f58195441d972e3a5eabd229f1?format=webp&width=800"
+                    alt="ResQBites Logo"
+                    className="w-8 h-8 object-contain"
+                  />
                 </div>
                 <span className="text-xl font-bold text-gray-900">
                   ResQBites
