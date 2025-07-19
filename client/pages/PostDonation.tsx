@@ -19,7 +19,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
-  Utensils,
   LogOut,
   User,
   ArrowLeft,
