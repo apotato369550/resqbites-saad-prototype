@@ -26,7 +26,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  Utensils,
   LogOut,
   User,
   Search,
