@@ -528,7 +528,11 @@ export default function AdminPanel() {
                       </p>
                     </div>
                     <div className="p-3 bg-brand-orange/20 rounded-full">
-                      <Utensils className="w-6 h-6 text-brand-orange" />
+                      <img
+                        src="https://cdn.builder.io/api/v1/image/assets%2Ff3e86ddc232c48b08028cac70a1690ce%2F2d8650f58195441d972e3a5eabd229f1?format=webp&width=800"
+                        alt="ResQBites"
+                        className="w-6 h-6 object-contain"
+                      />
                     </div>
                   </div>
                 </CardContent>
