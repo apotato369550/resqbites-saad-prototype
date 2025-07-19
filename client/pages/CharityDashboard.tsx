@@ -348,7 +348,11 @@ export default function CharityDashboard() {
           <h4 className="font-semibold text-blue-900 mb-2">Restaurant Info</h4>
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <Utensils className="w-4 h-4 text-blue-600" />
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2Ff3e86ddc232c48b08028cac70a1690ce%2F2d8650f58195441d972e3a5eabd229f1?format=webp&width=800"
+                alt="ResQBites"
+                className="w-4 h-4 object-contain"
+              />
               <span className="text-sm">
                 <strong>{donation.restaurant.name}</strong> •{" "}
                 {donation.restaurant.totalDonations} total donations
