@@ -20,7 +20,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import {
-  Utensils,
   LogOut,
   User,
   Shield,
