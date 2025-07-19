@@ -19,7 +19,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import {
-  Utensils,
   Plus,
   Clock,
   MapPin,
