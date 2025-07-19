@@ -26,7 +26,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  Utensils,
+  Building2,
   LogOut,
   User,
   Search,
@@ -487,7 +487,7 @@ export default function AdminPanel() {
             <nav className="-mb-px flex space-x-8">
               {[
                 { id: "overview", label: "Overview", icon: BarChart3 },
-                { id: "restaurants", label: "Restaurants", icon: Utensils },
+                { id: "restaurants", label: "Restaurants", icon: Building2 },
                 { id: "charities", label: "Charities", icon: Heart },
                 { id: "donations", label: "Donation Records", icon: Package },
               ].map((tab) => {
