@@ -1,0 +1,498 @@
+# ResQBites Food Donation Platform - System Documentation
+
+## Executive Summary
+ResQBites is a web-based platform that connects restaurants with surplus food to verified charities for redistribution. The system facilitates food rescue operations by providing a digital marketplace where restaurants can post available food donations and charities can browse, reserve, and manage food pickups.
+
+## 1. System Overview
+
+### 1.1 Purpose
+- Enable restaurants to reduce food waste by donating surplus food
+- Connect verified charitable organizations with available food donations
+- Track food rescue impact and provide accountability mechanisms
+- Streamline the food donation process with digital tools
+
+### 1.2 Target Users
+- **Restaurants**: Food service establishments with surplus food
+- **Charities**: Verified non-profit organizations serving communities in need
+- **Administrators**: Platform managers who verify and oversee operations
+
+## 2. Technology Stack
+
+### 2.1 Frontend Architecture
+- **Framework**: React 18 with TypeScript
+- **Build Tool**: Vite 6.2.2
+- **Routing**: React Router 6 (SPA mode)
+- **Styling**: TailwindCSS 3.4.11 with custom brand theming
+- **UI Components**: Radix UI + Custom component library (Shadcn/ui pattern)
+- **State Management**: React Context API + TanStack Query 5.56.2
+- **Icons**: Lucide React
+- **Animations**: Framer Motion
+
+### 2.2 Backend Architecture
+- **Server**: Express.js 4.18.2 (integrated with Vite dev server)
+- **Type Safety**: Zod 3.23.8 for schema validation
+- **Development**: Hot reload for both client and server
+
+### 2.3 Development Tools
+- **Package Manager**: NPM
+- **Testing**: Vitest 3.1.4
+- **Code Quality**: Prettier, TypeScript compiler
+- **Deployment**: Production build with binary support
+
+## 3. System Architecture Overview
+
+### 3.1 High-Level Component View
+
+
+┌─────────────────────────────────────────────────────────────┐
+│                    CLIENT (React SPA)                       │
+├─────────────��───────────────────────────────────────────────┤
+│  Authentication Layer (AuthContext)                        │
+│  ├── Login/Register                                         │
+│  ├── Role-based Access Control                             │
+│  └── Protected Routes                                       │
+├─────────────────────────────────────────────────────────────┤
+│  User Interface Modules                                    │
+│  ├── Restaurant Module                                     │
+│  │   ├── Dashboard                                         │
+│  │   └── Post Donation                                     │
+│  ├── Charity Module                                        │
+│  │   ├── Browse Donations                                  │
+│  │   ├── Manage Claimed Food                              │
+│  │   └── Verification Process                             │
+│  └── Admin Module                                          │
+│      ├── Platform Overview                                 │
+│      ├── User Management                                   │
+│      └── Verification Management                           │
+├─────────────────────────────────────────────────────────────┤
+│  Shared Components                                         │
+│  ├── UI Component Library (Cards, Buttons, Forms)         │
+│  ├── Navigation Components                                 │
+│  └── Dialog/Modal Components                              │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   SERVER (Express.js)                      │
+├────────────────────────────────────────────────────────��────┤
+│  API Routes                                                │
+│  ├── /api/ping - Health check                             │
+│  └── /api/demo - Demo endpoint                            │
+├─────────────────────────────────────────────────────────────┤
+│  Static File Serving                                      │
+│  └── Serves built React SPA                               │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   STORAGE LAYER                            │
+├─────────────────────────────────────────────────────────────┤
+│  Client-side Storage                                       │
+│  ├── localStorage (Authentication state)                   │
+│  └── Mock Data (In-memory for demo)                       │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 3.2 Data Flow Architecture
+
+```
+User Authentication Flow:
+Browser → AuthContext → localStorage → Protected Routes
+
+Donation Management Flow:
+Restaurant → Post Form → Local State → Dashboard Display
+
+Charity Browse Flow:
+Charity → Browse Interface → Filter/Search → Reserve Action
+
+Admin Management Flow:
+Admin → Multi-tab Interface → Verification Actions → Status Updates
+```
+
+## 4. Module Design
+
+### 4.1 Authentication Module (Auth.tsx)
+**Purpose**: User authentication and role selection
+**Inputs**:
+- Email address
+- Password
+- User role (Restaurant/Charity)
+- Organization name (for registration)
+
+**Outputs**:
+- Authentication success/failure
+- User session establishment
+- Role-based navigation redirect
+
+**Features**:
+- Dual-mode form (login/register)
+- Role-based registration
+- Demo account access
+- Philippine business context
+
+### 4.2 Restaurant Module
+
+#### 4.2.1 Restaurant Dashboard (RestaurantDashboard.tsx)
+**Purpose**: Central hub for restaurant food donation management
+**Inputs**:
+- Search queries
+- Filter selections
+- User interactions (view details, confirm pickup)
+
+**Outputs**:
+- Donation statistics overview
+- Donation list with status indicators
+- Detailed donation information (modal)
+- Navigation to post donation form
+
+**Features**:
+- Statistics cards (active, reserved, completed, lives impacted)
+- Donation cards with images and status
+- Detail view modal with full donation information
+- Action buttons for managing reservations
+
+#### 4.2.2 Post Donation (PostDonation.tsx)
+**Purpose**: Form interface for creating new food donations
+**Inputs**:
+- Food information (name, type, description)
+- Quantity and serving details
+- Timing information (expiration, pickup window)
+- Location and contact details
+- Food images (up to 5 files)
+- Special instructions
+
+**Outputs**:
+- New donation record creation
+- Image upload handling
+- Form validation feedback
+- Success/error messaging
+
+**Features**:
+- Multi-section form with validation
+- Image upload with preview
+- Philippine food type categories
+- Real-time form state management
+
+### 4.3 Charity Module
+
+#### 4.3.1 Charity Dashboard (CharityDashboard.tsx)
+**Purpose**: Browse and reserve available food donations
+**Inputs**:
+- Search queries
+- Food type filters
+- Location preferences
+- Reservation actions
+
+**Outputs**:
+- Available donation listings
+- Reservation confirmations
+- Restaurant contact information
+- Impact statistics
+
+**Features**:
+- Grid-based donation display
+- Urgency indicators
+- Distance calculations
+- Detailed donation modals
+- Accept donation workflow
+
+#### 4.3.2 Manage Claimed Food (ManageClaimedFood.tsx)
+**Purpose**: Track and complete claimed food donations
+**Inputs**:
+- Pickup confirmations
+- Actual impact data (people fed, meals served)
+- Distribution notes
+- Rating and feedback
+
+**Outputs**:
+- Donation status updates
+- Impact tracking
+- Feedback submission
+- Completion records
+
+**Features**:
+- Status progression tracking
+- Impact recording forms
+- Rating system (1-5 stars)
+- Completion workflow
+
+#### 4.3.3 Pending Verification (PendingCharityDashboard.tsx)
+**Purpose**: Charity verification process management
+**Inputs**:
+- Organization information
+- Philippine compliance documents
+- Contact details
+- Verification application data
+
+**Outputs**:
+- Verification status updates
+- Document upload confirmations
+- Application submission
+- Status tracking
+
+**Features**:
+- Philippine regulatory compliance
+- Document upload interface
+- Verification status tracking
+- Application form with validation
+
+### 4.4 Admin Module
+
+#### 4.4.1 Admin Panel (AdminPanel.tsx)
+**Purpose**: Platform administration and oversight
+**Inputs**:
+- Search queries
+- Filter selections
+- Verification decisions
+- Status updates
+
+**Outputs**:
+- Platform metrics and analytics
+- User management actions
+- Verification approvals/rejections
+- System reports
+
+**Features**:
+- Multi-tab interface (Overview, Restaurants, Charities, Donations)
+- Platform-wide statistics
+- User verification workflow
+- Comprehensive reporting
+
+## 5. Data Entities and Relationships
+
+### 5.1 Core Data Entities
+
+#### User Entity
+```typescript
+interface User {
+  id: string;
+  email: string;
+  role: "restaurant" | "charity" | "admin";
+  organizationName: string;
+  isVerified: boolean;
+}
+```
+
+#### Restaurant Entity
+```typescript
+interface Restaurant {
+  id: string;
+  name: string;
+  address: string;
+  phone: string;
+  email: string;
+  joinedDate: string;
+  totalDonations: number;
+  livesImpacted: number;
+  mealsProvided: number;
+  rating: number;
+  status: "active" | "inactive";
+  lastDonation: string;
+}
+```
+
+#### Charity Entity
+```typescript
+interface Charity {
+  id: string;
+  name: string;
+  address: string;
+  phone: string;
+  email: string;
+  registrationDate: string;
+  status: "verified" | "pending" | "rejected";
+  donationsReceived: number;
+  livesImpacted: number;
+  mealsDistributed: number;
+  lastActivity: string;
+  verificationDocuments?: string[];
+}
+```
+
+#### Food Donation Entity
+```typescript
+interface FoodDonation {
+  id: string;
+  name: string;
+  type: string;
+  quantity: string;
+  peopleFed: number;
+  numberOfMeals: number;
+  description: string;
+  expirationTime: string;
+  pickupWindow: string;
+  location: string;
+  contactPerson: string;
+  contactPhone: string;
+  specialInstructions?: string;
+  images: string[];
+  status: "active" | "reserved" | "completed" | "expired";
+  reservedBy?: string;
+  postedAt: string;
+  rating?: number;
+  feedback?: string;
+}
+```
+
+#### Verification Application Entity
+```typescript
+interface VerificationApplication {
+  organizationName: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  phone: string;
+  email: string;
+  contactPersonName: string;
+  contactPersonTitle: string;
+  organizationType: string;
+  taxId: string; // TIN for Philippines
+  websiteUrl: string;
+  description: string;
+  servicesProvided: string;
+  targetPopulation: string;
+  operatingHours: string;
+  documents: File[];
+}
+```
+
+### 5.2 Entity Relationships (ERD Conceptual)
+
+```
+USER (1) ────────────── (0..N) FOOD_DONATION
+  │                               │
+  │                               │
+  │                               │
+USER (1) ────────────── (0..N) RESERVATION
+  │                               │
+  │                               │
+  │                               │
+USER (1) ────────────── (0..1) VERIFICATION_APPLICATION
+
+Relationships:
+- User (Restaurant) → Creates → Food Donations (1:N)
+- User (Charity) → Reserves → Food Donations (N:N through Reservations)
+- User (Charity) → Submits → Verification Application (1:1)
+- User (Admin) → Manages → All Entities (1:N)
+```
+
+## 6. User Interface Design
+
+### 6.1 Design System
+- **Color Palette**:
+  - Primary Green: `hsl(142, 76%, 36%)` (brand-green)
+  - Secondary Orange: `hsl(24, 95%, 53%)` (brand-orange)
+  - Neutral Grays: Various shades for text and backgrounds
+  - Status Colors: Blue (active), Amber (pending), Green (success), Red (error)
+
+- **Typography**: 
+  - Font Stack: `ui-sans-serif, system-ui, sans-serif`
+  - Sizes: 12px - 48px with semantic naming
+
+- **Layout Patterns**:
+  - Card-based content display
+  - Grid layouts for listings
+  - Modal dialogs for detailed views
+  - Responsive breakpoints for mobile/tablet/desktop
+
+### 6.2 Component Library
+- **Buttons**: Multiple variants (primary, secondary, outline, ghost)
+- **Forms**: Input fields, textareas, selects, file uploads
+- **Navigation**: Headers with logo, user menu, breadcrumbs
+- **Data Display**: Cards, tables, statistics displays
+- **Feedback**: Toast notifications, loading states, error messages
+
+## 7. Navigation Flow / Sitemap
+
+### 7.1 Site Structure
+```
+┌─ Authentication (/)
+│   ├─ Login Form
+│   └─ Registration Form
+│
+├─ Restaurant Section (/restaurant)
+│   ├─ Dashboard (/restaurant)
+│   │   ├─ Statistics Overview
+│   │   ├─ Donation Listings
+│   │   └─ Action Buttons
+│   └─ Post Donation (/post-donation)
+│       ├─ Food Information Form
+│       ├─ Timing & Pickup Details
+│       ├─ Contact Information
+│       └─ Image Upload
+│
+├─ Charity Section (/charity)
+│   ├─ Browse Donations (/charity)
+│   │   ├─ Available Donations Grid
+│   │   ├─ Search & Filters
+│   │   └─ Donation Details Modal
+│   ├─ Manage Claimed (/manage-claimed)
+│   │   ├─ Claimed Donations List
+│   │   ├─ Status Updates
+│   │   └─ Completion Forms
+│   └─ Verification (/pending-verification)
+│       ├─ Status Display
+│       ├�� Application Form
+│       └─ Document Upload
+│
+└─ Admin Section (/admin)
+    ├─ Overview Tab
+    │   ├─ Platform Statistics
+    │   └─ Top Performers
+    ├─ Restaurants Tab
+    │   └─ Restaurant Management
+    ├─ Charities Tab
+    │   ├─ Charity Listings
+    │   └─ Verification Actions
+    └─ Donations Tab
+        └─ Donation Records
+```
+
+### 7.2 User Journey Flows
+
+#### Restaurant User Flow:
+1. Login/Register → Restaurant Dashboard
+2. View donation statistics and active donations
+3. Post New Donation → Form completion → Success message
+4. Manage reservations → Confirm pickups → Track impact
+
+#### Charity User Flow:
+1. Login/Register → Verification check
+2. If pending → Verification Dashboard → Submit application
+3. If verified → Browse Donations → Filter/Search → Reserve
+4. Manage Claimed → Track pickups → Complete distribution → Rate experience
+
+#### Admin User Flow:
+1. Login → Admin Panel → Multi-tab dashboard
+2. Review platform metrics and user activity
+3. Manage charity verification applications
+4. Monitor donation records and system health
+
+## 8. Key Features Summary
+
+### 8.1 Authentication & Security
+- Role-based access control
+- Protected routes with verification requirements
+- Session persistence via localStorage
+- Philippine regulatory compliance for charities
+
+### 8.2 Food Donation Management
+- Comprehensive donation posting with rich media
+- Status tracking throughout donation lifecycle
+- Impact measurement and reporting
+- Rating and feedback system
+
+### 8.3 Platform Administration
+- Multi-role user management
+- Verification workflow for charitable organizations
+- Platform-wide analytics and reporting
+- System health monitoring
+
+### 8.4 User Experience
+- Responsive design for all device types
+- Intuitive navigation with clear information hierarchy
+- Real-time status updates and notifications
+- Professional, modern interface design
+
+This system documentation provides a comprehensive overview of the ResQBites platform architecture, enabling effective analysis and development planning for the food donation ecosystem.
